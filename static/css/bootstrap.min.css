@@ -198,13 +198,14 @@
 
 body {
     margin: 0;
+    padding: 0;
     font-family: var(--bs-body-font-family);
     font-size: var(--bs-body-font-size);
     font-weight: var(--bs-body-font-weight);
     line-height: var(--bs-body-line-height);
     color: var(--bs-body-color);
     text-align: var(--bs-body-text-align);
-    background-color: var(--bs-body-bg);
+    /* background-color: var(--bs-body-bg); */
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent
 }
@@ -473,7 +474,7 @@ select:disabled {
 }
 
 [type=button], [type=reset], [type=submit], button {
-    -webkit-appearance: button
+    -webkit-appearance: button;
 }
 
 [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {

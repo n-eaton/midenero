@@ -1,6 +1,22 @@
+html, body {
+    height: 100%;
+}
+
+
 body {
     font-size: .875rem;
+    min-width: 320px;
 
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 1 auto;
 }
 
 .feather {
@@ -112,6 +128,8 @@ body {
     -moz-user-select: none;
     user-select: none;
 }
+
+
 
 @media (min-width: 768px) {
     .bd-placeholder-img-lg {
