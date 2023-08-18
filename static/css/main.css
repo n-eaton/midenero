@@ -129,10 +129,12 @@ main {
     user-select: none;
 }
 
+.showPasswordToggle:hover {
+    color: rgb(255, 0, 191);
+}
 
-
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
     }
-}
+} */
