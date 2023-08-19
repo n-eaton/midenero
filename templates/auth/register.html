@@ -19,12 +19,15 @@
                     <div class="card-title mb-3 py-1">
                         <h4 class="text-center">Register for a free account</h4>
                     </div>
-                    <form action="" method="post">
 
 
+{% comment %} username {% endcomment %}
+                    <form action="" method="post">{% csrf_token %}
+
+                        {% include 'partials/messages.html' %}
                         <div class="form-group mb-3">
                             <input type="text" name="username" id="usernameField" class="form-control form-control"
-                                placeholder="Username" aria-describedby="inputGroup-sizing-lg">
+                                placeholder="Username" aria-describedby="inputGroup-sizing-lg" value={{ fieldValues.username}}>
                         </div>
                         <div class="invalid_feedback invalid-feedback" style="display: none;">
 
@@ -32,28 +35,28 @@
                         <p class="text-sm text-success usernameSuccessOutput"></p>
 
 
-
+{% comment %} for email {% endcomment %}
                         <div class="form-group mb-3">
                             <input type="email" name="email" id="emailField" class="form-control form-control"
-                                placeholder="Email">
+                                placeholder="Email" value={{ fieldValues.email}}>
                         </div>
                         <div class="emailFeedBackArea invalid-feedback" style="display: none;">
-                            
+
                         </div>
                         <p class="text-sm text-success emailSuccessOutput"></p>
 
-
+{% comment %} for password {% endcomment %}
                         <div class="form-group mb-3">
                             <input type="password" name="password" id="passwordField" class="form-control form-control"
-                                placeholder="Password">
+                                placeholder="Password" >
                         </div>
                         <div class="d-grid d-md-flex justify-content-md-end showToggle">
                             <small class="justify-content-md-end mb-2 showPasswordToggle user-select-none">SHOW</small>
                         </div>
 
-
+{% comment %} button {% endcomment %}
                         <div class="d-grid mx-auto ">
-                            <input type="submit" value="Register" class="btn btn-lg btn-secondary mb-3">
+                            <input type="submit" value="Register" class="btn btn-lg btn-secondary submit-btn mb-3">
                         </div>
 
                     </form>

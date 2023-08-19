@@ -1,9 +1,10 @@
 from pathlib import Path
 import os
-# import environ
+from django.contrib import messages
+from decouple import config
+from dotenv import load_dotenv
 
-# import env
-
+load_dotenv()
 
 # env = environ.Env()
 # environ.Env.read_env()
@@ -127,3 +128,17 @@ STATICFILES_DIRS = [ os.path.join(BASE_DIR, "static")]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# messages tags
+MESSAGE_TAGS = {
+    messages.ERROR:"danger",
+}
+
+# email 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default = '')

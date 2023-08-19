@@ -6,12 +6,17 @@ const usernameSuccessOutput = document.querySelector('.usernameSuccessOutput');
 const emailSuccessOutput = document.querySelector('.emailSuccessOutput');
 const showPasswordToggle = document.querySelector('.showPasswordToggle');
 const passwordField = document.querySelector('#passwordField');
+const submitBtn = document.querySelector('.submit-btn')
+
+
 
 const handleToggleInput=(e)=>{
     if(showPasswordToggle.textContent==='SHOW'){
         showPasswordToggle.textContent='HIDE';
+        passwordField.setAttribute('type','text');
     } else {
         showPasswordToggle.textContent = 'SHOW';
+        passwordField.setAttribute('type', 'password');
     }
 };
 
@@ -33,16 +38,25 @@ emailField.addEventListener('keyup', (e) => {
             method: "POST",
         }).then(res => res.json()).then(data => {
             console.log('data', data);
+
             emailSuccessOutput.style.display = 'none';
             if (data.email_error) {
+
+                // submitBtn.setAttribute('disabled', 'disabled');
+                
+
                 emailField.classList.add("is-invalid");
                 emailFeedbackArea.style.display = "block";
-                emailFeedbackArea.innerHTML = `<p>${data.email_error}</p>`
+                emailFeedbackArea.innerHTML = `<p>${data.email_error}</p>`;
+                submitBtn.disabled = true; 
+            } else {
+                submitBtn.removeAttribute('disabled');
             }
         });
     };
 
 });
+
 
 
 usernameField.addEventListener('keyup', (e)=>{
@@ -65,7 +79,10 @@ usernameField.addEventListener('keyup', (e)=>{
             if (data.username_error){
                 usernameField.classList.add("is-invalid");
                 feedbackArea.style.display = "block";
-                feedbackArea.innerHTML=`<p>${data.username_error}</p>`
+                feedbackArea.innerHTML=`<p>${data.username_error}</p>`;
+                submitBtn.disabled = true; 
+            }else {
+                submitBtn.disabled = false;
             }
         });
     };
