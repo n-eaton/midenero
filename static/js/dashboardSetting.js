@@ -5,5 +5,5 @@ document.addEventListener('DOMContentLoaded', function () {
     // Set a timeout to hide the messages after 5 seconds
     setTimeout(function () {
         messagesContainer.style.display = 'none';
-    }, 1000); // 1000 milliseconds = 1 second
+    }, 5000); // 5000 milliseconds = 5 seconds
 });

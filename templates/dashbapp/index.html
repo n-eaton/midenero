@@ -2,17 +2,62 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container">
+    <div class="row">
 
 
+        <div id="flash-messages">
+            {% include 'partials/messages.html' %}
+        </div>
+
+        <div class="col-md-9 col-6  col-sm-6 mt-2 bg-primary breadcrumb-container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Expenses</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">My Expenses</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-3 col-6 mt-2 col-sm-6 add-expensse-btn">
+            <a class="btn btn-primary add-expensse-btn" href="{% url 'add-expense' %}">Add Expense</a>
+        </div>
+        <br>
+
+        
+        <div class="container-fluid mt-3">
+            {% if expenses.count %}
+            <table class="table-striped table-hover table-dark table">
+                <thead>
+                    <tr>
+                        <th>Amount </th>
+                        <th>Category</th>
+                        <th>Description </th>
+                        <th>Date </th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
                 
-    this is the index page
+                <tbody>
 
-    <ul class="list-group">
-        <li class="list-group-item">Bought Something</li>
-        <li class="list-group-item">Bought Something</li>
-        <li class="list-group-item">Bought Something</li>
-        <li class="list-group-item">Bought Something</li>
-        <li class="list-group-item">Bought Something</li>
-        <li class="list-group-item">Bought Something</li>
-    </ul>
+                    {% for e in expenses %}
+                    <tr>
+                        <td>{{e.amount}}</td>
+                        <td>{{e.category}}</td>
+
+                        <td>{{e.description}}</td>
+
+                        <td>{{e.date}}</td>
+                        <td><a href="{% url 'expense-edit' e.id  %}" class="btn btn-secondary btn-sm">Edit</a></td>
+                        <td><a href="{% url 'expense-delete' e.id  %}" class="btn btn-danger btn-sm">Delete</a></td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
+

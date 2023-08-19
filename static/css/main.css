@@ -138,3 +138,11 @@ main {
         font-size: 3.5rem;
     }
 } */
+
+.breadcrumb-container {
+    margin-left: 15px;
+}
+
+.add-expensse-btn{
+    width: 271px;
+}

@@ -4,20 +4,31 @@
 
 {% block content %}
 
+
 <div class="container">
   <div class="row">
+    <div id="flash-messages">
+        {% include 'partials/messages.html' %}
+    </div>
+    <h5>Preferred Currency</h5>
+    <form action="{% url 'preferences' %}" method="post">
+        {% csrf_token %}
     <div class="input-group mt-3">
-      <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-
-        <option selected>Choose your currency</option>
+      <select name="currency" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+        {% if user_preferences.curency %}
+        <option name="currency" selected value="{{user_preferences.curency}}">{{user_preferences.curency}}</option>
+        
+        {% endif %}
         {% for currency in currencies %}
-        <option selected>{{currency.name}} - {{currency.value}} </option>
+        <option name="currency" value="{{currency.name}} - {{currency.value}}">{{currency.name}} - {{currency.value}} </option>
         {% endfor %}
       </select>
-      <button class="btn btn-outline-secondary" type="button">Button</button>
+      <input type="submit" class="btn btn-outline-secondary" value="Save"/>
     </div>
+    </form>
     <hr />
   </div>
 </div>
+
 
 {% endblock %}
