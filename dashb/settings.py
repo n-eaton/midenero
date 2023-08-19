@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dashbapp',
     'authentication',
-    
+    'userpreferences',
+ 
 ]
 
 MIDDLEWARE = [

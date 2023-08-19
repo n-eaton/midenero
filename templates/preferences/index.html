@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %} {% comment %} {% load static %} {% endcomment %} 
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="input-group mt-3">
+      <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+
+        <option selected>Choose your currency</option>
+        {% for currency in currencies %}
+        <option selected>{{currency.name}} - {{currency.value}} </option>
+        {% endfor %}
+      </select>
+      <button class="btn btn-outline-secondary" type="button">Button</button>
+    </div>
+    <hr />
+  </div>
+</div>
+
+{% endblock %}
