@@ -3619,7 +3619,7 @@ textarea.form-control-lg {
 }
 
 .dropdown-toggle {
-    white-space: nowrap
+    white-space: wrap;
 }
 
 .dropdown-toggle::after {

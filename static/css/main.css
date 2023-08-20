@@ -133,16 +133,16 @@ main {
     color: rgb(255, 0, 191);
 }
 
-/* @media (min-width: 768px) {
+@media (min-width: 768px) {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
     }
-} */
+}
 
 .breadcrumb-container {
     margin-left: 15px;
 }
 
 .add-expensse-btn{
-    width: 271px;
+    width: 270px;
 }

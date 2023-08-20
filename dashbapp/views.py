@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-
+import json
 from .models import Category, Expense
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.http import JsonResponse
 # Create your views here.
 
 
@@ -13,7 +14,7 @@ def index(request):
     categories = Category.objects.all()
     expenses = Expense.objects.filter(owner=request.user)
     
-    paginator = Paginator(expenses, 2)
+    paginator = Paginator(expenses, 5)
     page_number = request.GET.get('page')
     page_obj = Paginator.get_page(paginator, page_number)
     
@@ -101,3 +102,17 @@ def expense_delete(request, id):
     expense.delete()
     messages.success(request, "Expense removed")
     return redirect('expenses')
+
+def search_expenses(request):
+    if request.method=="POST":
+        search_str = json.loads(request.body).get('searchText')
+        expenses = Expense.filter(
+            amount__starts_with=search_str, owner=request.user) | Expense.filter(
+            date__starts_with=search_str, owner=request.user) | Expense.filter(
+            description__icontains=search_str, owner=request.user) | Expense.filter(
+            category__icontains=search_str, owner=request.user)
+            
+        data=expenses.values()
+        return JsonResponse(list(data), safe=False)
+    
+        
